@@ -19,7 +19,6 @@
     "dependencies": {
         "@sei-js/core": "^3.2.1",
         "@sei-js/react": "^3.2.0",
-        "peacemaker-unity-react-sei-sdk": "github:ISTechLabs/PeacemakerSeiSdk",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-unity-webgl": "^9.5.2"

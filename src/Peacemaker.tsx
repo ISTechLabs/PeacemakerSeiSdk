@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, FC } from 'react';
+import React, { useState, useCallback, useEffect, FC } from 'react';
 import { Unity, useUnityContext } from 'react-unity-webgl';
 import { SeiWalletProvider, SupportedWalletInput } from '@sei-js/react';
 import SeiAgent from './SeiAgent';

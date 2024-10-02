@@ -121,7 +121,7 @@ If you are using an example Unity project found in the C# SDK repository, you wi
 
 ## Demo
 
-![](./media/PeacemakerDemo.gif)
+![](https://raw.githubusercontent.com/ISTechLabs/PeacemakerSeiSdk/refs/heads/master/media/PeacemakerDemo.gif)
 
 ## Limitations
 

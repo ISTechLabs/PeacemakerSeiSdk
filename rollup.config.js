@@ -4,6 +4,7 @@ import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { babel } from '@rollup/plugin-babel';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 
 export default {
     input: 'src/index.ts',
@@ -21,8 +22,10 @@ export default {
     ],
     plugins: [
         peerDepsExternal(),
+        nodePolyfills(),
         resolve({
-            preferBuiltins: true,
+            preferBuiltins: false,
+            browser: true,
         }),
         commonjs(),
         json(),

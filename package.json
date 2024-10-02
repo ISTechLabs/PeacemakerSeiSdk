@@ -1,6 +1,6 @@
 {
     "name": "peacemaker-unity-react-sei-sdk",
-    "private": true,
+    "private": false,
     "version": "1.0.0",
     "description": "A React component for integrating Unity WebGL with Sei blockchain",
     "main": "dist/index.js",

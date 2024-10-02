@@ -48,7 +48,7 @@ You can also set a custom size of your Unity scene by passing `width` and `heigh
 
 ### Unity C# bindings
 
-The instructions for configuring your Unity project and using C# API can be found in the [following repository](https://https://github.com/ISTechLabs/SeiUnitySDK).
+The instructions for configuring your Unity project and using C# API can be found in the [following repository](https://github.com/ISTechLabs/SeiUnitySDK).
 
 ## React Project Example
 

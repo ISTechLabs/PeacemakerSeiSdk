@@ -1,7 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
+import json from '@rollup/plugin-json';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import { babel } from '@rollup/plugin-babel';
 
 export default {
     input: 'src/index.ts',
@@ -17,5 +19,23 @@ export default {
             sourcemap: true,
         },
     ],
-    plugins: [peerDepsExternal(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' })],
+    plugins: [
+        peerDepsExternal(),
+        resolve({
+            preferBuiltins: true,
+        }),
+        commonjs(),
+        json(),
+        typescript({
+            tsconfig: './tsconfig.json',
+            declaration: true,
+            declarationDir: 'dist',
+        }),
+        babel({
+            babelHelpers: 'bundled',
+            exclude: 'node_modules/**',
+            presets: ['@babel/preset-react'],
+        }),
+    ],
+    external: ['react', 'react-dom'],
 };

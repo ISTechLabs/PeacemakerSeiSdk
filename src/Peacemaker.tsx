@@ -53,10 +53,10 @@ export interface PeacemakerProps {
 }
 
 const Peacemaker: FC<PeacemakerProps> = ({
-    loaderUrl, // example value: 'unity/Build/Build/Build.loader.js'
-    dataUrl, // example value: 'unity/Build/Build/Build.data'
-    frameworkUrl, // example value: 'unity/Build/Build/Build.framework.js'
-    codeUrl, // example value: 'unity/Build/Build/Build.wasm'
+    loaderUrl, // example value: 'unity/Build/Build.loader.js'
+    dataUrl, // example value: 'unity/Build/Build.data'
+    frameworkUrl, // example value: 'unity/Build/Build.framework.js'
+    codeUrl, // example value: 'unity/Build/Build.wasm'
     onUnityError,
     onUnityLoad,
     timeoutMs = 30_000,

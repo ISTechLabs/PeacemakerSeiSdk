@@ -10,22 +10,29 @@
         "build": "rollup -c",
         "prepare": "npm run build"
     },
+    "files": [
+        "dist",
+        "src",
+        "README.md",
+        "LICENSE"
+    ],
     "dependencies": {
         "@sei-js/core": "^3.2.1",
         "@sei-js/react": "^3.2.0",
+        "peacemaker-unity-react-sei-sdk": "github:ISTechLabs/PeacemakerSeiSdk",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-unity-webgl": "^9.5.2"
     },
     "devDependencies": {
-        "@types/react": "^18.0.0",
+        "@babel/core": "^7.18.2",
+        "@babel/preset-react": "^7.17.12",
         "@rollup/plugin-babel": "^5.3.1",
         "@rollup/plugin-commonjs": "^22.0.0",
         "@rollup/plugin-json": "^4.1.0",
         "@rollup/plugin-node-resolve": "^13.3.0",
         "@rollup/plugin-typescript": "^8.3.2",
-        "@babel/core": "^7.18.2",
-        "@babel/preset-react": "^7.17.12",
+        "@types/react": "^18.0.0",
         "rollup": "^2.75.6",
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "typescript": "^4.7.3"

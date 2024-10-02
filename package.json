@@ -1,0 +1,39 @@
+{
+    "name": "peacemaker-unity-react-sei-sdk",
+    "private": true,
+    "version": "1.0.0",
+    "description": "A React component for integrating Unity WebGL with Sei blockchain",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "rollup -c",
+        "prepare": "npm run build"
+    },
+    "dependencies": {
+        "@sei-js/core": "^3.2.1",
+        "@sei-js/react": "^3.2.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-unity-webgl": "^9.5.2"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^22.0.0",
+        "@rollup/plugin-node-resolve": "^13.3.0",
+        "@rollup/plugin-typescript": "^8.3.2",
+        "rollup": "^2.75.6",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "@types/react": "^18.3.10",
+        "@types/react-dom": "^18.3.0",
+        "typescript": "^5.5.3"
+    },
+    "keywords": [
+        "react",
+        "unity",
+        "webgl",
+        "sei",
+        "blockchain"
+    ],
+    "author": "IsTechLabs",
+    "license": "MIT"
+}

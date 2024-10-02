@@ -16,6 +16,10 @@
         "README.md",
         "LICENSE"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ISTechLabs/PeacemakerSeiSdk"
+    },
     "dependencies": {
         "@sei-js/core": "^3.2.1",
         "@sei-js/react": "^3.2.0",

@@ -1,10 +1,9 @@
-// boilerplate code
-
 import React, { useState, useCallback, useEffect, FC } from 'react';
 import { useSigningCosmWasmClient, useWallet, useSelectWallet, useCosmWasmClient } from '@sei-js/react';
 import { UnityEvent } from './Peacemaker';
 import { ReactUnityEventParameter } from 'react-unity-webgl/distribution/types/react-unity-event-parameters';
 
+// TODO: add debug logging
 interface SeiAgentProps {
     timeoutMs: number;
     eventQueue: UnityEvent[];
@@ -13,7 +12,13 @@ interface SeiAgentProps {
     isLoaded: boolean;
 }
 
-const SeiAgent: FC<SeiAgentProps> = ({ eventQueue, setEventQueue, timeoutMs = 30_000, sendMessage, isLoaded }) => {
+const SeiAgent: FC<SeiAgentProps> = ({
+    eventQueue,
+    setEventQueue,
+    timeoutMs = 30_000,
+    sendMessage,
+    isLoaded,
+}: SeiAgentProps) => {
     const { connectedWallet, accounts, chainId } = useWallet();
     const [timeoutHandler, setTimeoutHandler] = useState<NodeJS.Timeout | null>(null);
     const { openModal, closeModal } = useSelectWallet();
@@ -97,7 +102,7 @@ const SeiAgent: FC<SeiAgentProps> = ({ eventQueue, setEventQueue, timeoutMs = 30
                     onLoginCallback(event.id, walletAddress, '');
                 } catch (error: any) {
                     console.error('Error on login:', error);
-                    onLoginCallback(event.id, '', error?.message || 'Unknown');
+                    onLoginCallback(event.id, '', error || 'Unknown');
                 }
             } else if (event && event.name === 'OnLogout') {
                 // TODO: implement logout
@@ -111,7 +116,7 @@ const SeiAgent: FC<SeiAgentProps> = ({ eventQueue, setEventQueue, timeoutMs = 30
                     onQueryCallback(event.id, response, '');
                 } catch (error: any) {
                     console.error('Error on query:', error);
-                    onQueryCallback(event.id, '', error?.message || 'Unknown');
+                    onQueryCallback(event.id, '', error || 'Unknown');
                 }
             } else if (event && event.name === 'OnExecute') {
                 if (!signingClient) {
@@ -124,17 +129,19 @@ const SeiAgent: FC<SeiAgentProps> = ({ eventQueue, setEventQueue, timeoutMs = 30
                         event.data.SenderAddress,
                         event.data.ContractAddress,
                         event.data.Message,
-                        event.data.Fee
+                        event.data.Fee,
+                        (event.data.Memo !== null && event.data.Memo) || undefined,
+                        (event.data.Funds !== null && event.data.Funds) || undefined
                     );
                     onExecuteCallback(event.id, '', '');
                 } catch (error: any) {
                     console.error('Error on execute:', error);
-                    onExecuteCallback(event.id, '', error?.message || 'Unknown');
+                    onExecuteCallback(event.id, '', error || 'Unknown');
                 }
             }
         }
         setEventQueue([]);
-    }, [onLoginCallback, onExecuteCallback, onQueryCallback]);
+    }, [onLoginCallback, onExecuteCallback, onQueryCallback, eventQueue]);
 
     useEffect(() => {
         if (!!connectedWallet && !!resolvePromise) {

@@ -26,6 +26,8 @@ interface ExecuteRequest {
     ContractAddress: string;
     Message: any;
     Fee: Fee;
+    Memo?: string;
+    Funds?: [{ amount: string; denom: string }];
 }
 
 interface UnityRequest {
@@ -151,7 +153,6 @@ const Peacemaker: FC<PeacemakerProps> = ({
             id,
             name: 'OnLogin',
             data: request,
-            // callback: onLoginCallback,
         };
         const newEventQueue = [...eventQueue, newEvent];
 
@@ -159,7 +160,6 @@ const Peacemaker: FC<PeacemakerProps> = ({
     }, []);
 
     const handleSeiExecuteRequest = useCallback((...parameters: any[]) => {
-        console.log('OnLogin Parameters:', parameters);
         const payload = unwrapParameters(parameters);
 
         const id = payload.Id;
@@ -169,11 +169,19 @@ const Peacemaker: FC<PeacemakerProps> = ({
             throw new Error('Expected SenderAddress, ContractAddress, Message and Fee in Execute Request');
         }
 
+        const message = JSON.parse(request.Message);
+
         const newEvent: UnityEvent = {
             id,
             name: 'OnExecute',
-            data: request,
-            // callback: onExecuteCallback,
+            data: {
+                SenderAddress: request.SenderAddress,
+                ContractAddress: request.ContractAddress,
+                Message: message,
+                Fee: request.Fee,
+                Memo: request.Memo,
+                Funds: request.Funds,
+            },
         };
         const newEventQueue = [...eventQueue, newEvent];
 
@@ -190,11 +198,15 @@ const Peacemaker: FC<PeacemakerProps> = ({
             throw new Error('Expected ContractAddress and Query in Query Request');
         }
 
+        const query = JSON.parse(request.Query);
+
         const newEvent: UnityEvent = {
             id,
             name: 'OnQuery',
-            data: request,
-            // callback: onQueryCallback,
+            data: {
+                ContractAddress: request.ContractAddress,
+                Query: query,
+            },
         };
         const newEventQueue = [...eventQueue, newEvent];
 

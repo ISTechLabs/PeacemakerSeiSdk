@@ -35,8 +35,8 @@ export default function App() {
             frameworkUrl="unity/Build/Build.framework.js"
             codeUrl="unity/Build/Build.wasm"
             timeoutMs={30_000}
-            width="800px"
-            height="600px"
+            width="100%"
+            height="100%"
         />
     );
 }
@@ -44,7 +44,7 @@ export default function App() {
 
 Optionally, you can pass a `timeoutMs` prop to set the maximum time in milliseconds to wait for user's response to authentication request. Default is 30 seconds.
 
-You can also set a custom size of your Unity scene by passing `width` and `height` string props as in the example above.
+You can also set a custom size of your Unity scene by passing `width` and `height` string props as in the example above (either as percentages or pixels, e.g. `"100%"` or `"600px"`).
 
 ### Unity C# bindings
 

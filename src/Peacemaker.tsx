@@ -214,27 +214,42 @@ const Peacemaker: FC<PeacemakerProps> = ({
     }, []);
 
     return (
-        <div>
-            {chainId && restUrl && rpcUrl && walletList && (
-                <SeiWalletProvider
-                    chainConfiguration={{
-                        chainId, // example value:'atlantic-2',
-                        restUrl, // example value: 'https://rest.atlantic-2.seinetwork.io',
-                        rpcUrl, // example value:'https://rpc.atlantic-2.seinetwork.io',
-                    }}
-                    wallets={walletList}
-                    // autoConnect={(targetWallet as SupportedWalletInput) || undefined}
-                >
-                    <SeiAgent
-                        sendMessage={sendMessage}
-                        isLoaded={isLoaded}
-                        eventQueue={eventQueue}
-                        setEventQueue={setEventQueue}
-                        timeoutMs={timeoutMs}
-                    />
-                </SeiWalletProvider>
-            )}
-            <Unity unityProvider={unityProvider} style={{ width, height }} />
+        <div
+            style={{
+                width: '100vw',
+                height: '100vh',
+            }}
+        >
+            <div
+                style={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+            >
+                {chainId && restUrl && rpcUrl && walletList && (
+                    <SeiWalletProvider
+                        chainConfiguration={{
+                            chainId, // example value:'atlantic-2',
+                            restUrl, // example value: 'https://rest.atlantic-2.seinetwork.io',
+                            rpcUrl, // example value:'https://rpc.atlantic-2.seinetwork.io',
+                        }}
+                        wallets={walletList}
+                        // autoConnect={(targetWallet as SupportedWalletInput) || undefined}
+                    >
+                        <SeiAgent
+                            sendMessage={sendMessage}
+                            isLoaded={isLoaded}
+                            eventQueue={eventQueue}
+                            setEventQueue={setEventQueue}
+                            timeoutMs={timeoutMs}
+                        />
+                    </SeiWalletProvider>
+                )}
+                <Unity unityProvider={unityProvider} style={{ width, height }} />
+            </div>
         </div>
     );
 };
